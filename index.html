@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAGI Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.hero{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);border-bottom:var(--rule)}
+.hero-left{padding:80px 60px 80px 40px;display:flex;flex-direction:column;justify-content:center;border-right:var(--rule);background:#fff}
+.hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:2px;background:var(--azure)}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.6vw,4rem);font-weight:400;line-height:1.1;color:var(--blue);margin-bottom:32px}
+.hero-h1 em{font-style:italic;color:var(--azure)}
+.hero-tagline{font-size:1.15rem;line-height:1.75;color:#2a4a6b;font-weight:300;max-width:500px;margin-bottom:48px;border-left:3px solid var(--azure);padding-left:20px;font-style:italic}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-right{display:flex;flex-direction:column}
+.hero-img{flex:1;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:360px}
+.hero-img-lbl{position:absolute;bottom:24px;left:24px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--rule)}
+.stat-box{padding:28px 24px;border-right:var(--rule-lt);transition:background .15s;cursor:default}
+.stat-box:last-child{border-right:none}
+.stat-box:hover{background:var(--pale)}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:400;color:var(--azure);line-height:1;margin-bottom:6px}
+.stat-n sup{font-size:1rem}
+.stat-l{font-size:.72rem;font-weight:400;letter-spacing:.04em;color:var(--gray);line-height:1.4}
+.vision{background:var(--navy);border-bottom:var(--rule)}
+.vision-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 2fr}
+.vision-lbl{padding:64px 40px 64px 0;border-right:1px solid rgba(184,224,255,.2);display:flex;flex-direction:column;justify-content:center}
+.vision-lbl .eyebrow{color:var(--sky)}
+.vision-lbl h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:#fff;line-height:1.25}
+.vision-lbl h2 em{font-style:italic}
+.vision-content{padding:64px 0 64px 60px}
+.vision-text{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.85);font-weight:300}
+.vision-text strong{font-weight:700;color:var(--sky)}
+.pill-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.pill{padding:48px 40px;border-right:var(--rule-lt);transition:background .15s;cursor:default}
+.pill:last-child{border-right:none}
+.pill:hover{background:var(--pale)}
+.pill-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:400;color:var(--border);line-height:1;margin-bottom:16px}
+.pill-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;color:var(--blue);margin-bottom:12px}
+.pill-body{font-size:.88rem;color:var(--gray);line-height:1.7;font-weight:300;margin-bottom:24px}
+.pill-link{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--azure);text-decoration:none;border-bottom:2px solid var(--azure);padding-bottom:2px;transition:opacity .15s}
+.pill-link:hover{opacity:.6}
+.expertise{background:var(--pale);border-bottom:var(--rule)}
+.exp-inner{max-width:1280px;margin:0 auto;padding:60px 40px}
+.exp-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;color:var(--blue);margin-bottom:32px}
+.tag-row{display:flex;flex-wrap:wrap;border:var(--rule-lt)}
+.etag{padding:12px 20px;font-size:.8rem;font-weight:400;letter-spacing:.04em;color:var(--blue);border-right:var(--rule-lt);border-bottom:var(--rule-lt);transition:background .15s,color .15s;cursor:default}
+.etag:hover{background:var(--azure);color:#fff}
+.footprint{background:var(--mint);border-bottom:var(--rule)}
+.fp-inner{max-width:1280px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.fp-desc{font-size:.9rem;color:var(--gray);line-height:1.7;font-weight:300;margin-top:16px}
+.c-list{display:flex;flex-direction:column}
+.c-row{display:flex;align-items:center;padding:22px 0;border-bottom:var(--rule-lt);gap:20px;transition:padding-left .2s;cursor:default}
+.c-row:first-child{border-top:var(--rule-lt)}
+.c-row:hover{padding-left:12px}
+.cflag{font-size:1.6rem}
+.cname{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;color:var(--blue)}
+.cdesc{font-size:.82rem;color:var(--gray);font-weight:300;margin-left:auto;text-align:right;max-width:280px;line-height:1.5}
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{border-right:none;border-bottom:var(--rule);padding:60px 40px}
+  .vision-inner{grid-template-columns:1fr}
+  .vision-lbl{border-right:none;border-bottom:1px solid rgba(184,224,255,.15);padding:48px 0}
+  .vision-content{padding:48px 0}
+  .pill-grid{grid-template-columns:1fr}
+  .pill{border-right:none;border-bottom:var(--rule-lt)}
+  .fp-inner{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:768px){
+  .hero-left{padding:48px 20px}
+  .vision-inner,.exp-inner,.fp-inner{padding:0 20px}
+  .exp-inner{padding:40px 20px}
+  .fp-inner{padding:60px 20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-top">
+    <a href="index.html" class="nav-logo">PAGI</a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="research.html">Research</a>
+      <a href="advisory.html">Advisory</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="team.html">Team</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Dr.-Ing. Ali Bawono, PMP · TUM Asia · Singapore</div>
+    <h1 class="hero-h1">Performance and<br><em>Agile Green</em><br>Infrastructure</h1>
+    <p class="hero-tagline">&#8211; an Innovative and Sustainable Built Environment</p>
+    <div class="hero-actions">
+      <a href="research.html" class="btn-p">Explore Research &#8594;</a>
+      <a href="#contact" class="btn-o">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img">
+      <svg width="360" height="240" viewBox="0 0 360 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.16">
+        <rect x="20" y="90" width="320" height="7" rx="3.5" fill="white"/>
+        <rect x="20" y="112" width="320" height="7" rx="3.5" fill="white"/>
+        <rect x="20" y="134" width="320" height="7" rx="3.5" fill="white"/>
+        <circle cx="90" cy="60" r="32" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="180" cy="60" r="32" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="270" cy="60" r="32" stroke="white" stroke-width="3" fill="none"/>
+        <path d="M40 180 Q90 148 135 165 Q180 182 225 155 Q270 128 320 148" stroke="white" stroke-width="2.5" fill="none"/>
+        <rect x="65" y="180" width="48" height="48" rx="2" stroke="white" stroke-width="2" fill="none"/>
+        <rect x="156" y="173" width="48" height="55" rx="2" stroke="white" stroke-width="2" fill="none"/>
+        <rect x="247" y="164" width="48" height="64" rx="2" stroke="white" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="hero-img-lbl">Performance &amp; Agile Green Infrastructure</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-box"><div class="stat-n">15<sup>+</sup></div><div class="stat-l">Years R&amp;D &amp; advisory experience</div></div>
+      <div class="stat-box"><div class="stat-n">5</div><div class="stat-l">Countries of active project footprint</div></div>
+      <div class="stat-box"><div class="stat-n">3</div><div class="stat-l">Pillars: R&amp;D · Advisory · Education</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="about">
+  <div class="vision-inner">
+    <div class="vision-lbl">
+      <div class="eyebrow">Vision</div>
+      <h2>Transforming the built environment<br><em>for all generations</em></h2>
+    </div>
+    <div class="vision-content">
+      <p class="vision-text">To pioneer a transformative era of the built environment where <strong>human prosperity, ecological vitality, and systemic resilience</strong> are inseparably linked. We envision a world where infrastructure is not static but a living, responsive system &#8212; <strong>holistically sustainable by design and agile by nature</strong> &#8212; anticipating change, healing the planet, and elevating the quality of life for all generations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="section">
+  <div class="s-inner">
+    <div class="s-head sr">
+      <div><div class="eyebrow">Activities</div><h2 class="s-title">Three interconnected <em>pillars</em></h2></div>
+      <p class="s-sub">Driving the PAGI mission from theory to global impact across research, advisory, and education.</p>
+    </div>
+    <div class="pill-grid">
+      <div class="pill sr">
+        <div class="pill-num">01</div>
+        <h3 class="pill-title">Research &amp; Development</h3>
+        <p class="pill-body">Our innovation engine. This pillar focuses on pioneering the next generation of green infrastructure and sustainable transport through rigorous system thinking and scientific inquiry &#8212; in partnership with TUM, NTU, NUS SERIS, and IIUM.</p>
+        <a href="research.html" class="pill-link">View Research &#8594;</a>
+      </div>
+      <div class="pill sr">
+        <div class="pill-num">02</div>
+        <h3 class="pill-title">Consulting &amp; Advisory</h3>
+        <p class="pill-body">We advise governments, universities, and communities to translate cutting-edge research into actionable, site-specific strategies &#8212; from feasibility studies and agile master planning to high-performance technical solutions and on-site construction.</p>
+        <a href="advisory.html" class="pill-link">View Advisory &#8594;</a>
+      </div>
+      <div class="pill sr">
+        <div class="pill-num">03</div>
+        <h3 class="pill-title">Education &amp; Capacity Building</h3>
+        <p class="pill-body">Our multiplier for systemic change. Through professional certifications, executive workshops, and academic partnerships, we empower a global network of practitioners and decision-makers equipped for the challenges ahead.</p>
+        <a href="teaching.html" class="pill-link">View Teaching &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise">
+  <div class="exp-inner">
+    <p class="exp-title sr">Areas of expertise</p>
+    <div class="tag-row sr">
+      <span class="etag">Pavement Engineering</span><span class="etag">Electrified Roadways</span><span class="etag">ECC Materials</span><span class="etag">Green Infrastructure</span><span class="etag">Railway Systems</span><span class="etag">AI / ML Monitoring</span><span class="etag">Solar PV Integration</span><span class="etag">Circular Economy</span><span class="etag">Transit-Oriented Development</span><span class="etag">Electromobility</span><span class="etag">Finite Element Analysis</span><span class="etag">Nature-Based Solutions</span><span class="etag">Asset Management</span><span class="etag">Sustainable Transport Policy</span><span class="etag">Energy Harvesting Infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTPRINT -->
+<section class="footprint">
+  <div class="fp-inner">
+    <div class="sr">
+      <div class="eyebrow">Global Footprint</div>
+      <h2 class="s-title">Projects across <em>five countries</em></h2>
+      <p class="fp-desc">A context-driven, agile approach applied to diverse infrastructure challenges across Asia, Europe, and the Middle East.</p>
+    </div>
+    <div class="c-list sr">
+      <div class="c-row"><span class="cflag">&#127480;&#127468;</span><span class="cname">Singapore</span><span class="cdesc">MRT noise, ECC pavement, solar PV railway, JTC construction, LTA consulting</span></div>
+      <div class="c-row"><span class="cflag">&#127465;&#127466;</span><span class="cname">Germany</span><span class="cdesc">Core R&amp;D partnership with Technical University of Munich (TUM)</span></div>
+      <div class="c-row"><span class="cflag">&#127470;&#127465;</span><span class="cname">Indonesia</span><span class="cdesc">EV &amp; e-bus adoption with KFW and PT SMI (S4I Project)</span></div>
+      <div class="c-row"><span class="cflag">&#127474;&#127486;</span><span class="cname">Malaysia</span><span class="cdesc">AI pavement crack detection in collaboration with IIUM</span></div>
+      <div class="c-row"><span class="cflag">&#127462;&#127466;</span><span class="cname">Abu Dhabi, UAE</span><span class="cdesc">Freight Master Plan advisory with Dornier Consulting International</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards section">
+  <div class="s-inner">
+    <div class="s-head sr">
+      <div><div class="eyebrow">Recognition</div><h2 class="s-title">Awards &amp; <em>achievements</em></h2></div>
+    </div>
+    <div class="aw-grid">
+      <div class="aw-item sr"><span class="aw-icon">&#127942;</span><h3 class="aw-title">Outstanding Research &#8212; Springer Nature</h3><p class="aw-body">Awarded for research on Engineered Cementitious Composites for Electrified Roadway Electromobility &#8212; a globally recognised contribution to sustainable transport infrastructure.</p></div>
+      <div class="aw-item sr"><span class="aw-icon">&#129351;</span><h3 class="aw-title">Best Paper &#8212; Asia Australia Road Conference</h3><p class="aw-body">Recognised for seminal work on smart and clean electromobility, advancing the discourse on next-generation urban transport systems in the Asia-Pacific region.</p></div>
+      <div class="aw-item sr"><span class="aw-icon">&#128161;</span><h3 class="aw-title">International Patent Holder</h3><p class="aw-body">Holds an international patent on the electrified roadway pavement system alongside several Technology Disclosures covering advanced cementitious composite applications.</p></div>
+      <div class="aw-item sr"><span class="aw-icon">&#127758;</span><h3 class="aw-title">Global Expert Roles</h3><p class="aw-body">Expert contributions to the World Economic Forum, KFW Development Bank, PricewaterhouseCoopers, and Dornier Consulting International across policy and infrastructure projects.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="ct-inner">
+    <div class="ct-left">
+      <div class="eyebrow">Contact</div>
+      <h2>Let&#8217;s build sustainable infrastructure together</h2>
+      <p>Whether you are a researcher, policymaker, developer, or industry leader &#8212; collaboration on projects advancing green, high-performance infrastructure is welcome.</p>
+      <div class="ct-links">
+        <a href="team.html" class="cl"><span class="cl-icon">&#128100;</span> View Team Profile</a>
+        <a href="team.html" class="cl"><span class="cl-icon">&#127963;</span> TUM Asia &#183; Singapore</a>
+      </div>
+    </div>
+    <div class="ct-right">
+      <h3>Aligned with UN Sustainable Development Goals</h3>
+      <div class="sdg-grid">
+        <div class="sdg"><div class="sdg-n" style="color:#fcc30b">7</div><div class="sdg-name">Affordable &amp; Clean Energy</div><div class="sdg-note">Solar PV railway, energy-harvesting infrastructure</div></div>
+        <div class="sdg"><div class="sdg-n" style="color:#fd6925">9</div><div class="sdg-name">Industry, Innovation &amp; Infrastructure</div><div class="sdg-note">ECC pavements, electrified roadways, AI monitoring</div></div>
+        <div class="sdg"><div class="sdg-n" style="color:#fd9d24">11</div><div class="sdg-name">Sustainable Cities &amp; Communities</div><div class="sdg-note">TOD, MRT noise mitigation, e-bus adoption</div></div>
+        <div class="sdg"><div class="sdg-n" style="color:#c5192d">4</div><div class="sdg-name">Quality Education</div><div class="sdg-note">iPMP, ADB capacity building, executive programmes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">PAGI Initiative &#183; Dr.-Ing. Ali Bawono, PMP</div>
+  <div class="fr">TUM Asia &#183; Singapore &#183; Performance &amp; Agile Green Infrastructure &#183; v1.6</div>
+</footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var g=e.target.parentElement.querySelectorAll('.sr:not(.in)');
+        var d=0;
+        g.forEach(function(s){
+          if(s.getBoundingClientRect().top<window.innerHeight+60){
+            setTimeout(function(){s.classList.add('in');},d);
+            d+=65;
+          }
+        });
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.06,rootMargin:'0px 0px -24px 0px'});
+  document.querySelectorAll('.sr').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
