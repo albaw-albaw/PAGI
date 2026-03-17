@@ -8,24 +8,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.hero{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);border-bottom:var(--rule)}
-.hero-left{padding:80px 60px 80px 40px;display:flex;flex-direction:column;justify-content:center;border-right:var(--rule);background:#fff}
-.hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--azure);margin-bottom:24px;display:flex;align-items:center;gap:10px}
-.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:2px;background:var(--azure)}
-.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.6vw,4rem);font-weight:400;line-height:1.1;color:var(--blue);margin-bottom:32px}
-.hero-h1 em{font-style:italic;color:var(--azure)}
-.hero-tagline{font-size:1.15rem;line-height:1.75;color:#2a4a6b;font-weight:300;max-width:500px;margin-bottom:48px;border-left:3px solid var(--azure);padding-left:20px;font-style:italic}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-.hero-right{display:flex;flex-direction:column}
-.hero-img{flex:1;background:var(--navy);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:360px}
-.hero-img-lbl{position:absolute;bottom:24px;left:24px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--rule)}
-.stat-box{padding:28px 24px;border-right:var(--rule-lt);transition:background .15s;cursor:default}
-.stat-box:last-child{border-right:none}
-.stat-box:hover{background:var(--pale)}
-.stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:400;color:var(--azure);line-height:1;margin-bottom:6px}
-.stat-n sup{font-size:1rem}
-.stat-l{font-size:.72rem;font-weight:400;letter-spacing:.04em;color:var(--gray);line-height:1.4}
+/* ── HERO (full-width, no right panel) ── */
+.hero{margin-top:64px;min-height:70vh;display:flex;align-items:center;justify-content:center;border-bottom:var(--rule);background:var(--navy);position:relative;overflow:hidden}
+.hero-bg-pattern{position:absolute;inset:0;background-image:linear-gradient(rgba(184,224,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,224,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-center{max-width:900px;margin:0 auto;padding:80px 40px;text-align:center;position:relative;z-index:1}
+.hero-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:28px;display:inline-flex;align-items:center;gap:12px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:inline-block;width:32px;height:2px;background:var(--azure)}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4.8rem);font-weight:400;line-height:1.08;color:#fff;margin-bottom:24px}
+.hero-h1 em{font-style:italic;color:var(--sky)}
+.hero-tagline{font-size:1.2rem;line-height:1.75;color:rgba(184,224,255,.8);font-weight:300;margin-bottom:48px;font-style:italic}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+
+/* ── VISION ── */
 .vision{background:var(--navy);border-bottom:var(--rule)}
 .vision-inner{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 2fr}
 .vision-lbl{padding:64px 40px 64px 0;border-right:1px solid rgba(184,224,255,.2);display:flex;flex-direction:column;justify-content:center}
@@ -35,6 +29,8 @@
 .vision-content{padding:64px 0 64px 60px}
 .vision-text{font-size:1.05rem;line-height:1.85;color:rgba(255,255,255,.85);font-weight:300}
 .vision-text strong{font-weight:700;color:var(--sky)}
+
+/* ── ACTIVITIES ── */
 .pill-grid{display:grid;grid-template-columns:repeat(3,1fr)}
 .pill{padding:48px 40px;border-right:var(--rule-lt);transition:background .15s;cursor:default}
 .pill:last-child{border-right:none}
@@ -44,6 +40,30 @@
 .pill-body{font-size:.88rem;color:var(--gray);line-height:1.7;font-weight:300;margin-bottom:24px}
 .pill-link{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--azure);text-decoration:none;border-bottom:2px solid var(--azure);padding-bottom:2px;transition:opacity .15s}
 .pill-link:hover{opacity:.6}
+
+/* ── FOCUS ── */
+.focus{background:var(--pale);border-bottom:var(--rule)}
+.focus-inner{max-width:1280px;margin:0 auto;padding:80px 40px}
+.focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:40px}
+.focus-text-block{}
+.focus-body{font-size:.95rem;line-height:1.85;color:#2a4a6b;font-weight:300;margin-bottom:20px}
+.focus-body strong{font-weight:700;color:var(--blue)}
+.focus-specialties{margin:28px 0;display:flex;flex-direction:column;gap:0}
+.spec-row{display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:var(--rule-lt)}
+.spec-row:first-child{border-top:var(--rule-lt)}
+.spec-num{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:var(--azure);line-height:1;flex-shrink:0;width:32px}
+.spec-text{}
+.spec-title{font-size:.9rem;font-weight:700;color:var(--blue);margin-bottom:3px}
+.spec-sub{font-size:.8rem;color:var(--gray);font-weight:300;line-height:1.5}
+.subtopics-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--azure);margin:28px 0 14px}
+.subtopic-tags{display:flex;flex-wrap:wrap;gap:8px}
+.stag{padding:7px 14px;font-size:.78rem;font-weight:400;color:var(--blue);border:var(--rule-lt);background:#fff;transition:all .15s;cursor:default}
+.stag:hover{background:var(--azure);color:#fff;border-color:var(--azure)}
+.focus-diagram{}
+.diagram-caption{font-size:.72rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--lgray);text-align:center;margin-top:16px}
+.diagram-img{width:100%;border:var(--rule-lt);display:block}
+
+/* ── FOOTPRINT ── */
 .footprint{background:var(--mint);border-bottom:var(--rule)}
 .fp-inner{max-width:1280px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
 .fp-desc{font-size:.9rem;color:var(--gray);line-height:1.7;font-weight:300;margin-top:16px}
@@ -54,20 +74,21 @@
 .cflag{font-size:1.6rem}
 .cname{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;color:var(--blue)}
 .cdesc{font-size:.82rem;color:var(--gray);font-weight:300;margin-left:auto;text-align:right;max-width:280px;line-height:1.5}
+
 @media(max-width:1024px){
-  .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-left{border-right:none;border-bottom:var(--rule);padding:60px 40px}
+  .hero-center{padding:60px 20px}
   .vision-inner{grid-template-columns:1fr}
   .vision-lbl{border-right:none;border-bottom:1px solid rgba(184,224,255,.15);padding:48px 0}
   .vision-content{padding:48px 0}
   .pill-grid{grid-template-columns:1fr}
   .pill{border-right:none;border-bottom:var(--rule-lt)}
+  .focus-grid{grid-template-columns:1fr;gap:40px}
   .fp-inner{grid-template-columns:1fr;gap:40px}
 }
 @media(max-width:768px){
-  .hero-left{padding:48px 20px}
-  .vision-inner,.fp-inner{padding:0 20px}
+  .vision-inner,.fp-inner,.focus-inner{padding:0 20px}
   .fp-inner{padding:60px 20px}
+  .focus-inner{padding:48px 20px}
 }
 </style>
 </head>
@@ -89,35 +110,14 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Dr.-Ing. Ali Bawono, PMP · TUM Asia · Singapore</div>
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-center">
+    <div class="hero-eyebrow">Dr.-Ing. Ali Bawono, PMP &#183; Singapore</div>
     <h1 class="hero-h1">Performance and<br><em>Agile Green</em><br>Infrastructure</h1>
     <p class="hero-tagline">&#8211; an Innovative and Sustainable Built Environment</p>
     <div class="hero-actions">
       <a href="research.html" class="btn-p">Explore Research &#8594;</a>
       <a href="#contact" class="btn-o">Get in Touch</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-img">
-      <svg width="360" height="240" viewBox="0 0 360 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.16">
-        <rect x="20" y="90" width="320" height="7" rx="3.5" fill="white"/>
-        <rect x="20" y="112" width="320" height="7" rx="3.5" fill="white"/>
-        <rect x="20" y="134" width="320" height="7" rx="3.5" fill="white"/>
-        <circle cx="90" cy="60" r="32" stroke="white" stroke-width="3" fill="none"/>
-        <circle cx="180" cy="60" r="32" stroke="white" stroke-width="3" fill="none"/>
-        <circle cx="270" cy="60" r="32" stroke="white" stroke-width="3" fill="none"/>
-        <path d="M40 180 Q90 148 135 165 Q180 182 225 155 Q270 128 320 148" stroke="white" stroke-width="2.5" fill="none"/>
-        <rect x="65" y="180" width="48" height="48" rx="2" stroke="white" stroke-width="2" fill="none"/>
-        <rect x="156" y="173" width="48" height="55" rx="2" stroke="white" stroke-width="2" fill="none"/>
-        <rect x="247" y="164" width="48" height="64" rx="2" stroke="white" stroke-width="2" fill="none"/>
-      </svg>
-      <div class="hero-img-lbl">Performance &amp; Agile Green Infrastructure</div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-box"><div class="stat-n">15<sup>+</sup></div><div class="stat-l">Years R&amp;D &amp; advisory experience</div></div>
-      <div class="stat-box"><div class="stat-n">5</div><div class="stat-l">Countries of active project footprint</div></div>
-      <div class="stat-box"><div class="stat-n">3</div><div class="stat-l">Pillars: R&amp;D · Advisory · Education</div></div>
     </div>
   </div>
 </section>
@@ -135,7 +135,7 @@
   </div>
 </section>
 
-<!-- THREE PILLARS -->
+<!-- ACTIVITIES -->
 <section class="section">
   <div class="s-inner">
     <div class="s-head sr">
@@ -161,6 +161,75 @@
         <p class="pill-body">Our multiplier for systemic change. Through professional certifications, executive workshops, and academic partnerships, we empower a global network of practitioners and decision-makers equipped for the challenges ahead.</p>
         <a href="teaching.html" class="pill-link">View Teaching &#8594;</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS -->
+<section class="focus">
+  <div class="focus-inner">
+    <div class="s-head sr" style="padding-top:0;margin-bottom:0">
+      <div><div class="eyebrow">Focus</div><h2 class="s-title">Green Infrastructure &amp; <em>Sustainable Transport</em></h2></div>
+      <p class="s-sub">Three main specialties addressed across system, innovation, and technical levels.</p>
+    </div>
+    <div class="focus-grid">
+
+      <!-- LEFT: text -->
+      <div class="focus-text-block sr">
+        <p class="focus-body">Our expertise is centered on <strong>Green Infrastructure</strong> and <strong>Sustainable Transport</strong>, with main specialties on three key infrastructure domains. Those three specialties are and can be addressed through different levels including system &amp; policy, innovation, and technical implementation.</p>
+
+        <div class="focus-specialties">
+          <div class="spec-row">
+            <div class="spec-num">1</div>
+            <div class="spec-text">
+              <div class="spec-title">Roadway / Highway Infrastructure</div>
+              <div class="spec-sub">Pavement engineering, highway design, materials, surface performance, and drainage systems</div>
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-num">2</div>
+            <div class="spec-text">
+              <div class="spec-title">Land Transport System</div>
+              <div class="spec-sub">Transport planning, Transit-Oriented Development, electromobility, MRT/BRT systems, and AI-driven asset management</div>
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-num">3</div>
+            <div class="spec-text">
+              <div class="spec-title">Railway Infrastructure</div>
+              <div class="spec-sub">Rail track engineering, noise mitigation, energy harvesting, rolling stock, and precast solutions</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtopics-label">Portfolio of Sub-Topics</div>
+        <p class="focus-body" style="margin-bottom:16px">Our portfolio includes but is not limited to:</p>
+        <div class="subtopic-tags">
+          <span class="stag">Pavement Engineering</span>
+          <span class="stag">Highway Design</span>
+          <span class="stag">Transit-Oriented Development</span>
+          <span class="stag">AI-Driven Asset Management</span>
+          <span class="stag">Electromobility Adoption</span>
+          <span class="stag">MRT / BRT Systems</span>
+          <span class="stag">Circular Economy</span>
+          <span class="stag">Nature-Based Solutions</span>
+          <span class="stag">Sustainable Materials</span>
+          <span class="stag">Energy-Harvesting Infrastructure</span>
+          <span class="stag">GESI</span>
+          <span class="stag">Emission Reduction</span>
+          <span class="stag">Traffic Impact</span>
+          <span class="stag">Precast Systems</span>
+          <span class="stag">AI / ML</span>
+          <span class="stag">Project Management</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: diagram -->
+      <div class="focus-diagram sr">
+        <img src="focus-diagram.png" alt="PAGI Focus Diagram — High Performance, Agile, Green Infrastructure and Sustainable Transport" class="diagram-img">
+        <p class="diagram-caption">High Performance, Agile, Green Infrastructure &amp; Sustainable Transport &#8212; Main Topics, Sub-Topics &amp; Levels</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -207,7 +276,7 @@
       <p>Whether you are a researcher, policymaker, developer, or industry leader &#8212; collaboration on projects advancing green, high-performance infrastructure is welcome.</p>
       <div class="ct-links">
         <a href="team.html" class="cl"><span class="cl-icon">&#128100;</span> View Team Profile</a>
-        <a href="team.html" class="cl"><span class="cl-icon">&#127963;</span> TUM Asia &#183; Singapore</a>
+        <a href="team.html" class="cl"><span class="cl-icon">&#127963;</span> Singapore</a>
       </div>
     </div>
     <div class="ct-right">
@@ -224,7 +293,7 @@
 
 <footer>
   <div class="fl">PAGI Initiative &#183; Dr.-Ing. Ali Bawono, PMP</div>
-  <div class="fr">TUM Asia &#183; Singapore &#183; Performance &amp; Agile Green Infrastructure &#183; v1.6</div>
+  <div class="fr">Performance &amp; Agile Green Infrastructure &#183; v1.6</div>
 </footer>
 
 <script>
